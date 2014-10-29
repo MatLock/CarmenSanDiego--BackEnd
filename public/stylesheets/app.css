@@ -1,0 +1,84 @@
+@CHARSET "UTF-8";
+
+body {
+	background-image:url("../images/fondo.png");  
+}
+
+.container {
+	width: 800px;
+	background-color: #ffffff; 
+}
+
+.estasEn {
+	margin-left: 20px;
+}
+
+.antes{
+	margin-left: 20px;
+}
+
+.page-heder{
+	text-align:center;
+}
+
+.thumbnails{
+	float: left;
+	margin-left: -12px;
+	
+}
+
+.thumbnail h3{
+	text-align:center;
+}
+
+.thumbnails p{
+	display: none;
+}
+
+
+
+.thumbnails button{
+	margin-left:138px;
+	margin-top: 20px;
+}
+.span4{
+	padding-left: 20px;
+}
+
+
+/* Estilos de Viajar*/
+
+.viajar{
+	height: 100px;
+}
+
+.avion{
+	height:100px;
+	margin-bottom: -105px;
+	
+}
+
+.subtitulo{
+	margin-left: 118px;
+}
+
+
+.selector{
+	margin-left: 120px;
+}
+
+
+/* Estilo de destinos fallidos - no me toma el list inline */
+.list-inline li{
+	color:green;
+}
+
+.villanoImagen img{
+	width:100px;
+	height:100px;
+}
+
+
+.villanos {
+	margin-top: 20px;
+}

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html  lang="en" ng-app="CarmenSanDiegoApp">
+<head>
+<meta charset="UTF-8">
+<title>Carmen SanDiego</title>
+
+<!-- JQUERY -->
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+	<!-- BOOTSTRAP -->	
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	
+	<!-- bootbox (dialogos de confirmacion) http://bootboxjs.com/ -->
+	<script src="lib/bootbox.min.js"></script>
+	
+	<!-- ANGULAR  -->
+  	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.7/angular.min.js"></script>
+  	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.7/angular-animate.js"></script>
+
+<link href="stylesheets/popUp.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="javascripts/css-pop.js"></script>
+<script type="text/javascript" src="javascripts/app.js"></script>
+<script type="text/javascript" src="javascripts/CarmenSanDiegoController.js"></script>
+
+<link rel="stylesheet" href="stylesheets/app.css" />
+<link rel="shortcut icon" href="images/favicon.ico" />
+
+
+</head>
+
+<body ng-controller="CarmenSanDiegoController">
+	<div class="container">
+	
+		<div class="page-heder">
+			<h1>
+				Carmen San Diego
+			</h1>
+		</div> <!-- Cierra page-heder --> 
+		
+		<div>
+			<a class="btn btn-primary" data-ng-click="generarCaso()"> generarCASO</a>
+		</div>
+		<h3>Descripcion del caso: {{caso}}</h3>
+		<div class="estasEn">
+		<h3> Estas en: {{paisActual}}			
+			<img alt="Argentina" src="images/arg.png" height="42" width="42">
+		</h3>
+		<h3>{{pista}}</h3>
+		</div>
+		
+		<div class="antes">
+		<h3>Antes: </h3>
+			<ul class="list-inline">
+			<li data-ng-repeat="pais in  recorridoCriminal">{{pais}} </li>
+			</ul>
+		</div>
+		
+		<div class="row">
+		<ul class="example-animate-container">
+			<li class="message bg-success animate-repeat" data-ng-repeat="msg in msgs">{{msg}}</li>
+		</ul>
+	</div>
+		
+		<div class="row">
+				  <div class="col-md-4">
+		    			 <div class="thumbnail">
+		    			 	<img src="images/banco.jpg" class="img-thumbnail"/>
+					      	<div class="caption text-center">
+			     				<button class="btn btn-info" id="ver" data-ng-click="visitarBanco()" onclick="popup('popUpDiv')">Visitar Banco</button>
+		     				</div>
+		    			</div>
+		 		  </div>
+		 		
+				  <div class="col-md-4">
+		    			 <div class="thumbnail">
+		    			 	<img src="images/club.jpg" class="img-thumbnail"/>
+					      	<div class="caption text-center">
+			     				<button class="btn btn-info" id="ver" data-ng-click="visitarClub()" onclick="popup('popUpDiv')">Visitar Club</button>
+		     				</div>
+		    			</div>
+		    		</div>
+		
+				  <div class="col-md-4">
+		    			 <div class="thumbnail">
+		    			 	<img src="images/biblioteca.jpg" class="img-thumbnail"/>
+					      	<div class="caption text-center">
+			     				<button class="btn btn-info" id="ver" data-ng-click="visitarBiblioteca()" onclick="popup('popUpDiv')">Visitar Biblioteca</button>
+		     				</div>
+		    			</div>
+		    	</div>
+			</div>	
+			
+			
+	<!--POPUP-->    
+    
+    <div id="blanket" style="display:none;"></div>
+	<div id="popUpDiv" style="display:none;">
+    		<h3>Pistas</h3>
+    	<a href="#" onclick="popup('popUpDiv')" >Click to Close CSS Pop Up</a>
+	</div>	
+ 
+
+ 	
+	<!-- / POPUP--> 					
+
+
+			
+	<div class="row">
+		<div class="col-md-4">
+			<div class="viajar thumbnail">
+				<div class="avion">
+					<img alt="Viajar" src="images/avion.png" height="100" width="100">
+				</div>
+				<div class="subtitulo">
+					<h3>Viajar a: </h3>
+				</div>
+				<div class="selector text-center">
+				<select required class="form-control" ng-model="conexionSeleccionada">
+			  		<option value=""> -- ingrese pais --</option>
+			  		<option ng-repeat="conexion in conexiones">
+			  			{{conexion}}
+			  		</option>
+		    		
+		   		</select>
+		   		</div>
+			</div>
+		</div>		
+		<div>
+			<a class="btn btn-primary" data-ng-click="viajar()"> Viajar</a>
+		</div>
+		   
+		 <div class="col-md-4">  
+
+		   		 <div class="well well-large">
+ 					Destinos Fallidos
+ 				</div>
+		   		 <ul class="list-inline">
+		   		 	<li ng-repeat="pais in destinosFallidos">
+		   		 		{{pais}} 
+		   		 	</li>
+				</ul>
+		  
+		 </div>
+	   </div> <!-- Cierra col md 4 -->
+ 	
+ 	<div class="row">
+ 		<div class="well well-large text-center h2">
+			Orden De Arresto  
+		</div>
+		<h3>Se emito orden de arresto contra: {{villanoSeleccionado}}</h3>
+		<div class="villanoImagen text-center">
+		 	<img alt="Burns" src="images/burns.png" class="img-circle">
+		</div>
+		 <div class="villanos text-center">
+		 	<select required class="form-control" ng-model="miVillano">
+		 		<option value=""> -- ingrese villano--</option>
+				<option ng-repeat="villano in villanos">
+			  			{{villano}}
+				</option>
+			</select>
+		</div>
+		<div>
+			<a class="btn btn-primary" data-ng-click="emitirOrdenPara()"> emitirOrdenDeArresto</a>
+		</div>
+		<h3>{{descripcion}}</h3>
+	</div>
+	
+	
+
+  
+		 	
+ </div> <!-- Cierra container -->
+ 	
+</body>
+</html>
